@@ -3,6 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Calendar,
+  MapPin,
+  Clock,
+  Users,
+  Heart,
+  Camera,
+  Coffee,
+  Sparkles,
+} from "lucide-react";
 
 function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
@@ -38,24 +49,41 @@ function Countdown() {
   }, []);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 max-w-4xl mx-auto">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 max-w-4xl mx-auto px-4 md:px-0">
       {[
         { label: "Days", value: timeLeft.days },
         { label: "Hours", value: timeLeft.hours },
         { label: "Minutes", value: timeLeft.minutes },
         { label: "Seconds", value: timeLeft.seconds },
       ].map((item, i) => (
-        <div
+        <motion.div
           key={i}
-          className="bg-[#990000] text-white p-6 md:p-8 rounded-lg shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.1 }}
+          className="glass-dark border border-white/10 text-white p-6 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden group"
         >
-          <div className="text-4xl md:text-6xl font-bold mb-1">
-            {item.value.toString().padStart(2, "0")}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative z-10">
+            <div className="text-4xl md:text-6xl font-black mb-1 overflow-hidden h-14 md:h-20 flex items-center justify-center">
+              <AnimatePresence mode="popLayout">
+                <motion.span
+                  key={item.value}
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -40, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                >
+                  {item.value.toString().padStart(2, "0")}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+            <div className="text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-accent-400">
+              {item.label}
+            </div>
           </div>
-          <div className="text-sm uppercase tracking-widest opacity-80">
-            {item.label}
-          </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
@@ -63,352 +91,484 @@ function Countdown() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-purple-100 selection:text-purple-900">
+    <div className="min-h-screen bg-surface-950 text-white font-sans selection:bg-brand-500/30 selection:text-white overflow-x-hidden">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-zinc-100 px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="text-2xl font-bold tracking-tighter text-purple-900 leading-none">
-            WDMA
-          </div>
-        </div>
-        <Link
-          href="#"
-          className="bg-purple-900 text-white px-6 py-2 rounded-full font-medium hover:bg-purple-800 transition-all shadow-lg shadow-purple-900/10"
+      <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-500">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex items-center gap-3 glass px-4 py-2 rounded-full"
         >
-          Book Now
-        </Link>
+          <div className="w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center overflow-hidden">
+            <Image
+              src="/logo.jpeg"
+              height={32}
+              width={32}
+              alt="Logo"
+              className="object-cover"
+            />
+          </div>
+          <span className="text-lg font-bold tracking-tighter text-white uppercase italic">
+            Love Reboot
+          </span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+        >
+          <Link
+            href="https://forms.gle/kk6wvn2nE6N19zRPA"
+            className="group relative px-6 py-2.5 bg-brand-600 rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-900/20"
+          >
+            <span className="relative z-10">Secure Your Slot</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-400 to-brand-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </Link>
+        </motion.div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black/50 z-10" />
-          <Image
-            src="/bonny_island_resort.png"
-            alt="Bonny Island Getaway"
-            fill
-            className="object-cover scale-105 animate-slow-zoom"
-            priority
-          />
+      <section className="relative min-h-screen flex items-center justify-center pt-20">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <motion.div
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+            className="absolute inset-0"
+          >
+            <Image
+              src="https://thegardencamp.notore.com/wp-content/uploads/2025/01/ext8-1-1.jpg"
+              alt="Bonny Island Getaway"
+              fill
+              className="object-cover brightness-[0.4]"
+              priority
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-surface-950/20 via-transparent to-surface-950" />
         </div>
 
-        <div className="relative z-20 text-center px-6 max-w-5xl">
-          <span className="inline-block py-1 px-4 rounded-full bg-gold-500/20 text-gold-200 border border-gold-500/30 text-sm font-semibold tracking-widest uppercase mb-6 backdrop-blur-sm">
-            Wisdom Driven Marriage Academy
-          </span>
-          <h1 className="text-5xl md:text-8xl font-bold text-white mb-6 tracking-tight uppercase">
-            Love <span className="text-gold-400">Reboot</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-zinc-100 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-            Join{" "}
-            <span className="font-semibold text-white">
-              Dr. Wisdom and Favour Osiri
-            </span>{" "}
-            for an unforgettable 3-night, 4-day Couples Getaway, where
-            intentional conversations and luxury meet.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gold-500 text-purple-950 px-10 py-4 rounded-full text-lg font-bold hover:bg-gold-400 transition-all transform hover:scale-105 shadow-2xl">
-              Registration Coming Soon
-            </button>
-            <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-full text-lg font-medium hover:bg-white/20 transition-all">
-              Learn More
-            </button>
-          </div>
+        <div className="relative z-20 text-center px-6 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.span
+              initial={{ letterSpacing: "0.2em", opacity: 0 }}
+              animate={{ letterSpacing: "0.4em", opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="inline-block py-2 px-6 rounded-full glass-dark text-accent-400 border border-accent-500/20 text-xs md:text-sm font-bold uppercase mb-8 backdrop-blur-xl"
+            >
+              Wisdom Driven Marriage Academy, Presents
+            </motion.span>
+
+            <h1 className="text-6xl md:text-9xl font-black mb-8 tracking-tighter uppercase leading-[0.9]">
+              Love{" "}
+              <span className="text-brand-500 drop-shadow-[0_0_15px_rgba(153,0,0,0.5)]">
+                Reboot
+              </span>
+            </h1>
+
+            <p className="text-lg md:text-2xl text-zinc-300 mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
+              Join{" "}
+              <span className="text-accent-400 font-bold border-b-2 border-accent-500/30">
+                Dr. Wisdom and Favour Osiri
+              </span>{" "}
+              for a transformative 3-night, 4-day Couples Getaway in the heart
+              of Bonny Island.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto glass-dark border border-accent-500/30 text-accent-100 px-12 py-5 rounded-full text-xl font-black uppercase tracking-widest hover:bg-accent-500/10 transition-all shadow-2xl relative group overflow-hidden"
+              >
+                <Sparkles className="absolute -left-4 -top-4 w-12 h-12 text-accent-500/20 group-hover:rotate-12 transition-transform" />
+                Registration Now
+              </motion.button>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+              >
+                <Link
+                  href="https://forms.gle/kk6wvn2nE6N19zRPA"
+                  className="group relative px-6 py-2.5 bg-yellow-600 rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-900/20"
+                >
+                  <span className="relative z-10"> Explore The Experience</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-400 to-brand-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Link>
+              </motion.div>
+              
+            </div>
+          </motion.div>
+
+          <Countdown />
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1 text-white">
-            ↓
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+        >
+          <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-1">
+            <motion.div
+              animate={{ height: ["20%", "60%", "20%"] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-1 bg-white/40 rounded-full"
+            />
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* About the Getaway Section */}
-      <section className="py-24 px-6 text-center">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-black tracking-tight">
-            About the{" "}
-            <span className="text-[#002244] border-b-4 border-[#990000] pb-1">
-              Getaway
-            </span>
-          </h2>
-          <p className="text-lg text-zinc-600 mb-12 leading-relaxed max-w-4xl mx-auto">
-            It&apos;s an escape to an unforgettable 3-night, 4-day Love Reboot
-            Couples Getaway, where intentional conversations, joyful moments,
-            and transformative learning meet comfort and luxury. Designed
-            exclusively for married couples, this experience offers the perfect
-            space to pause, reconnect, and strengthen your bond in a refreshing
-            and focused environment.
+      <section id="about" className="py-32 px-6 relative overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-500/10 blur-[120px] rounded-full" />
+        <div className="max-w-5xl mx-auto relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter uppercase">
+              The <span className="text-accent-400">Experience</span>
+            </h2>
+          </motion.div>
+
+          <p className="text-xl md:text-2xl text-zinc-400 mb-20 leading-relaxed max-w-4xl mx-auto font-light">
+            An escape to an unforgettable 3-night, 4-day Love Reboot Couples
+            Getaway, where intentional conversations, joyful moments, and
+            transformative learning meet comfort and luxury. Designed
+            exclusively for married couples.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {[
               {
                 label: "Bonny Island",
-                sub: "Enjoy the beautiful landscape of Bonny",
-                icon: (
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                ),
+                sub: "Enjoy the beautiful landscape and serene environment",
+                icon: <MapPin className="w-8 h-8 text-white" />,
               },
               {
                 label: "27th - 30th May 2026",
-                sub: "From the 27th to the 30th of May 2026",
-                icon: (
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                ),
+                sub: "Save the date for this life-changing encounter",
+                icon: <Calendar className="w-8 h-8 text-white" />,
               },
               {
                 label: "3 Nights, 4 Days",
-                sub: "Enjoy 3 nights of luxury and premium enjoyment",
-                icon: (
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
-                ),
+                sub: "Complete immersion in luxury and bonding",
+                icon: <Clock className="w-8 h-8 text-white" />,
               },
             ].map((item, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="p-8 border border-zinc-100 rounded-3xl bg-white shadow-sm flex flex-col items-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-10 glass-dark border border-white/5 rounded-[40px] flex flex-col items-center group hover:border-brand-500/30 transition-all duration-500"
               >
-                <div className="w-16 h-16 bg-[#990000] rounded-full flex items-center justify-center text-white mb-6 shadow-lg shadow-red-900/20">
+                <div className="w-20 h-20 bg-brand-600 rounded-2xl flex items-center justify-center mb-8 shadow-2xl shadow-brand-950/50 group-hover:rotate-6 transition-transform">
                   {item.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-black mb-2">
+                <h3 className="text-2xl font-black mb-4 tracking-tight uppercase">
                   {item.label}
                 </h3>
-                <p className="text-zinc-500 text-sm">{item.sub}</p>
-              </div>
+                <p className="text-zinc-500 leading-relaxed">{item.sub}</p>
+              </motion.div>
             ))}
           </div>
-
-          <Countdown />
         </div>
       </section>
 
       {/* Everything You Need Section */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-16 text-[#002244] tracking-tight">
-            Everything You Need for an{" "}
-            <span className="relative inline-block">
-              Amazing Experience
-              <span className="absolute bottom-1 left-0 w-full h-1.5 bg-[#990000] rounded-full"></span>
-            </span>
-          </h2>
+      <section className="py-32 px-6 bg-surface-900/50 relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter uppercase">
+              The <span className="text-brand-500">Package</span>
+            </h2>
+            <div className="inline-block glass-dark border border-brand-500/20 px-8 py-4 rounded-2xl mb-8">
+              <p className="text-brand-400 font-black text-3xl md:text-5xl tracking-tighter">
+                INVESTMENT: ₦600,000
+              </p>
+              <p className="text-zinc-500 text-sm mt-2 uppercase tracking-widest font-bold">
+                * Payments can be made in two installments
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto mt-12 bg-surface-950/50 p-6 rounded-[32px] border border-white/5 font-bold">
+              {[
+                {
+                  icon: <Users className="w-5 h-5 text-brand-400" />,
+                  label: "3 Nights Stay",
+                },
+                {
+                  icon: <Coffee className="w-5 h-5 text-brand-400" />,
+                  label: "Full-course Meals",
+                },
+                {
+                  icon: <Sparkles className="w-5 h-5 text-brand-400" />,
+                  label: "Coaching",
+                },
+                {
+                  icon: <MapPin className="w-5 h-5 text-brand-400" />,
+                  label: "Excursions",
+                },
+                {
+                  icon: <Heart className="w-5 h-5 text-brand-400" />,
+                  label: "T-Shirts",
+                },
+                {
+                  icon: <Sparkles className="w-5 h-5 text-brand-400" />,
+                  label: "Gift Packs",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-center gap-2 text-xs md:text-sm text-zinc-400"
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "5-Star Resort",
-                desc: "3 nights in a luxurious resort with world class amenities",
-                img: "/bonny_island_resort.png",
-              },
-              {
-                title: "Fine Dining",
-                desc: "Daily Breakfast plus choice of lunch or dinner",
+                title: "Curated Adventure Experience",
+                icon: <MapPin className="w-6 h-6" />,
                 img: "/luxury_dining_thailand.png",
               },
               {
-                title: "Vow Renewals",
-                desc: "Romantic Ceremony for Married Couples",
-                img: "/vow_renewal_thailand.png",
-              },
-              {
-                title: "Adventurous Excursions",
-                desc: "Boat cruises, Nature Walks, Historic Tours & more",
+                title: "The Connection Cruise",
+                icon: <Users className="w-6 h-6" />,
                 img: "/adventure_thailand_atv.png",
               },
               {
-                title: "Hangouts",
-                desc: "Hangouts with Dr. Wisdom and Favour Osiri",
+                title: "Fitness & Wellness Time",
+                icon: <Heart className="w-6 h-6" />,
+                img: "/adventure_thailand_atv.png",
+              },
+              {
+                title: "Interactive Couple Games",
+                icon: <Sparkles className="w-6 h-6" />,
                 img: "/reconnection_cruise.png",
               },
               {
-                title: "Airport Transfers",
-                desc: "Complimentary pickup and drop-off services",
+                title: "Poolside Relaxation",
+                icon: <Coffee className="w-6 h-6" />,
+                img: "/phuket_beach_luxury.png",
+              },
+              {
+                title: "All White Beach Party",
+                icon: <Users className="w-6 h-6" />,
+                img: "/phuket_beach_luxury.png",
+              },
+              {
+                title: "African Gala Night",
+                icon: <Users className="w-6 h-6" />,
+                img: "/phuket_beach_luxury.png",
+              },
+              {
+                title: "Marriage Deep-Dive",
+                icon: <Heart className="w-6 h-6" />,
                 img: "/phuket_beach_luxury.png",
               },
             ].map((item, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="relative h-80 rounded-2xl overflow-hidden group shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="relative h-96 rounded-[40px] overflow-hidden group shadow-2xl"
               >
                 <Image
                   src={item.img}
                   alt={item.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
-                <div className="absolute inset-x-0 bottom-0 p-8 text-white text-center">
-                  <h3 className="text-3xl font-bold mb-2 tracking-tight">
+                <div className="absolute inset-0 bg-linear-to-t from-surface-950 via-surface-950/20 to-transparent group-hover:via-brand-950/40 transition-all duration-500" />
+                <div className="absolute inset-x-0 bottom-0 p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full glass flex items-center justify-center text-accent-400 group-hover:scale-110 transition-transform">
+                      {item.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-black tracking-tighter uppercase leading-none group-hover:text-accent-400 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-sm opacity-90 font-light">{item.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Staggered Adventure Gallery */}
-      <section className="py-24 px-6">
+      {/* Testimonials Section */}
+      <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-[#002244] tracking-tight">
-            Exciting{" "}
-            <span className="relative inline-block border-2 border-[#990000] rounded-[50%] px-6 py-2 leading-none">
-              Adventures
-            </span>{" "}
-            Await
-          </h2>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
+            <p className="text-accent-400 font-black text-xl mb-4 uppercase tracking-[0.3em]">
+              Real Stories
+            </p>
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase">
+              Don&lsquo;t just take our{" "}
+              <span className="text-brand-500">word</span>
+            </h2>
+            <p className="text-zinc-500 font-bold mt-4 uppercase tracking-widest text-sm">
+              Testimonies from previous Love Reboot sessions
+            </p>
+          </motion.div>
 
-          <div className="flex flex-wrap md:flex-nowrap gap-4 justify-between items-end">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {[
               {
-                title: "Cruise Sails",
-                img: "/reconnection_cruise.png",
-                height: "h-64 md:h-80",
+                name: "Mr&Mrs Uju",
+                text: "Love reboot has been an amazing experience for us as we look forward to time away from the hustle and bustle !!! One of Our most enjoyed sessions was the honest survey/questionnaire on intimacy as a couple and truly that helped us understand how deliberate we need to be about our intimacy away from the busy-ness of life!!",
+                img: "/test1.jpeg",
               },
               {
-                title: "Nature Trails",
-                img: "/bonny_island_resort.png",
-                height: "h-80 md:h-96",
+                name: "James Washington",
+                text: "The sessions with Dr. Wisdom were life-changing. We left feeling refreshed and equipped with new tools for our marriage journey.",
+                img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400",
               },
-              {
-                title: "Wild Life",
-                img: "/adventure_thailand_atv.png",
-                height: "h-96 md:h-[30rem]",
-              },
-              {
-                title: "Historic Tours",
-                img: "/vow_renewal_thailand.png",
-                height: "h-80 md:h-96",
-              },
-              {
-                title: "Local Market",
-                img: "/phuket_beach_luxury.png",
-                height: "h-64 md:h-80",
-              },
-            ].map((item, i) => (
-              <div
+            ].map((testimonial, i) => (
+              <motion.div
                 key={i}
-                className={`flex-1 min-w-[200px] relative rounded-t-3xl overflow-hidden group ${item.height} shadow-xl`}
+                initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="flex flex-col md:flex-row items-center gap-8 p-10 glass-dark border border-white/5 rounded-[40px] text-left group hover:border-brand-500/20 transition-all duration-500"
               >
-                <Image
-                  src={item.img}
-                  alt={item.title}
-                  fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute inset-x-0 bottom-6 px-4 text-white text-center pointer-events-none">
-                  <h4 className="text-2xl font-bold tracking-tight">
-                    {item.title}
-                  </h4>
+                <div className="relative w-40 h-40 shrink-0">
+                  <div className="absolute inset-0 bg-brand-500 rounded-3xl rotate-6 group-hover:rotate-12 transition-transform" />
+                  <Image
+                    className="relative z-10 w-full h-full rounded-3xl object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    src={testimonial.img}
+                    alt={testimonial.name}
+                    width={160}
+                    height={160}
+                  />
                 </div>
-              </div>
+                <div>
+                  <div className="flex gap-1 mb-6">
+                    {[...Array(5)].map((_, i) => (
+                      <Sparkles
+                        key={i}
+                        className="w-5 h-5 text-accent-500 fill-accent-500"
+                      />
+                    ))}
+                  </div>
+                  <p className="text-zinc-300 text-lg md:text-xl font-medium leading-relaxed mb-6 italic">
+                    &ldquo;{testimonial.text}&rdquo;
+                  </p>
+                  <p className="text-accent-400 font-black tracking-tight uppercase text-lg">
+                    {testimonial.name}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action Section */}
-      <section className="relative py-48 px-6 text-center overflow-hidden">
+      {/* Hero-like CTA Section */}
+      <section
+        id="book"
+        className="relative py-48 px-6 text-center overflow-hidden"
+      >
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black/60 z-10" />
           <Image
             src="/reconnection_cruise.png"
             alt="Love Reboot"
             fill
-            className="object-cover"
+            className="object-cover brightness-[0.3]"
           />
+          <div className="absolute inset-0 bg-linear-to-b from-surface-950 via-transparent to-surface-950" />
         </div>
-        <div className="relative z-20 max-w-5xl mx-auto text-white">
-          <h2 className="text-5xl md:text-8xl font-bold mb-6 tracking-tighter">
-            Ready to Transform your{" "}
-            <span className="text-gold-400">Relationship?</span>
-          </h2>
-          <p className="text-xl md:text-2xl mb-12 font-light opacity-90 max-w-2xl mx-auto">
-            Limited spots available. Reserve your spot now for an unforgettable
-            experience.
-          </p>
-          <button className="bg-[#990000] text-white px-16 py-6 rounded-full text-2xl font-black hover:bg-red-700 transition-all transform hover:scale-110 shadow-2xl shadow-red-900/40 uppercase tracking-tight mb-12">
-            Reserve your Spot
-          </button>
 
-          <div className="mt-12 text-sm md:text-base">
-            <p className="mb-4">
-              Questions? Send us an email at{" "}
-              <span className="text-red-400 font-bold border-b-2 border-red-400 pb-1 cursor-pointer">
-                info@wdma.org
+        <div className="relative z-20 max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-5xl md:text-9xl font-black mb-8 tracking-tighter uppercase leading-[0.85]">
+              Transform your <br />
+              <span className="text-brand-500 drop-shadow-[0_0_20px_rgba(153,0,0,0.6)]">
+                Relationship
               </span>
+            </h2>
+            <p className="text-xl md:text-3xl mb-16 font-medium text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+              Limited spots available for this exclusive experience. Reserve
+              your place today.
             </p>
-            <p className="opacity-60 italic mb-2">
-              You can also pay in two installments.
-            </p>
-            <p className="opacity-60 text-xs mt-8 uppercase tracking-[0.5em]">
-              ©2026 LOVE REBOOT • BONNY ISLAND • ALL RIGHTS RESERVED
-            </p>
-          </div>
+
+            <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+              <Link
+                href="https://wa.me/2347033196465"
+                target="_blank"
+                className="w-full md:w-auto bg-green-500 text-white px-12 py-6 rounded-full text-2xl font-black hover:bg-green-500 transition-all transform hover:scale-105 shadow-2xl shadow-brand-900/40 uppercase tracking-tighter flex items-center justify-center gap-3"
+              >
+                WhatsApp Us
+              </Link>
+              <Link
+                href="https://forms.gle/kk6wvn2nE6N19zRPA"
+                target="_blank"
+                className="w-full md:w-auto glass border border-white/20 text-white px-12 py-6 rounded-full text-2xl font-black hover:bg-white/10 transition-all transform hover:scale-105 uppercase tracking-tighter"
+              >
+                Register Now
+              </Link>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-24 p-10 glass-dark border border-white/5 rounded-[40px] text-zinc-400 max-w-3xl mx-auto"
+            >
+              <div className="flex items-center justify-center gap-4 mb-8">
+                <div className="w-12 h-px bg-brand-500/30" />
+                <Camera className="w-6 h-6 text-brand-500" />
+                <div className="w-12 h-px bg-brand-500/30" />
+              </div>
+              <p className="text-lg md:text-xl font-bold text-white mb-6 uppercase tracking-tight">
+                Payment Details
+              </p>
+              <p className="mb-2 text-zinc-300">
+                Wisdom Driven Marriage Service
+              </p>
+              <p className="text-2xl font-black text-accent-400 mb-6 tracking-tighter">
+                UBA • 1023892797
+              </p>
+              <p className="text-sm opacity-60 uppercase tracking-widest leading-loose">
+                WhatsApp: 07033196465 <br />
+                Email: thewisdomdrivenmarriageacademy@gmail.com
+              </p>
+              <div className="mt-10 pt-10 border-t border-white/5">
+                <p className="opacity-40 text-xs font-bold uppercase tracking-[0.5em]">
+                  ©2026 LOVE REBOOT • BONNY ISLAND • ALL RIGHTS RESERVED
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
-
-      <style jsx global>{`
-        @keyframes slow-zoom {
-          0% {
-            transform: scale(1);
-          }
-          100% {
-            transform: scale(1.15);
-          }
-        }
-        .animate-slow-zoom {
-          animation: slow-zoom 30s ease-in-out infinite alternate;
-        }
-      `}</style>
     </div>
   );
 }

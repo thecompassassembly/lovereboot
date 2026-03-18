@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-950: #1a0201;
+  --color-brand-900: #2d0402;
+  --color-brand-800: #4a0703;
+  --color-brand-700: #6b0a05;
+  --color-brand-600: #8c0d06;
+  --color-brand-500: #990000;
+  --color-brand-400: #ba1108;
+  --color-brand-300: #d64d46;
+  --color-brand-200: #e89b96;
+  --color-brand-100: #f4cdca;
+  --color-brand-50: #fef2f2;
+
+  --color-accent-950: #432101;
+  --color-accent-900: #73410a;
+  --color-accent-600: #d18d00;
+  --color-accent-500: #f5b800;
+  --color-accent-400: #ffd11a;
+  --color-accent-300: #ffe147;
+  --color-accent-200: #fff185;
+  --color-accent-100: #fff9c2;
+  --color-accent-50: #fffdf0;
+
+  --color-surface-950: #0a0a0a;
+  --color-surface-900: #171717;
+  --color-surface-800: #262626;
+  --color-surface-100: #f5f5f5;
+  --color-surface-50: #fafafa;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-gold-50: #fffdf0;
-  --color-gold-100: #fff9c2;
-  --color-gold-200: #fff185;
-  --color-gold-300: #ffe147;
-  --color-gold-400: #ffd11a;
-  --color-gold-500: #f5b800;
-  --color-gold-600: #d18d00;
-  --color-gold-700: #a66600;
-  --color-gold-800: #874f06;
-  --color-gold-900: #73410a;
-  --color-gold-950: #432101;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,5 +46,61 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    var(--color-accent-400),
+    var(--color-accent-200)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes slow-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
