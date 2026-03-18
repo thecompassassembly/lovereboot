@@ -359,7 +359,7 @@ export default function Home() {
               {
                 title: "Interactive Couple Games",
                 icon: <Sparkles className="w-6 h-6" />,
-                img: "https://i.pinimg.com/736x/c5/72/91/c57291e615dfa7915f6be716c307283c.jpg",
+                img: "https://i.pinimg.com/control1/736x/a6/57/e1/a657e1504b545188d54b19d3f55f4768.jpg",
               },
               {
                 title: "Poolside Relaxation",
