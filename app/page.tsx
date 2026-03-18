@@ -204,7 +204,6 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-r from-brand-400 to-brand-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </Link>
               </motion.div>
-              
             </div>
           </motion.div>
 
@@ -345,7 +344,7 @@ export default function Home() {
               {
                 title: "Curated Adventure Experience",
                 icon: <MapPin className="w-6 h-6" />,
-                img: "/luxury_dining_thailand.png",
+                img: "https://i.pinimg.com/736x/8f/0b/3e/8f0b3e58be6f8efea69957c82d89277f.jpg",
               },
               {
                 title: "The Connection Cruise",
@@ -355,32 +354,32 @@ export default function Home() {
               {
                 title: "Fitness & Wellness Time",
                 icon: <Heart className="w-6 h-6" />,
-                img: "/adventure_thailand_atv.png",
+                img: "https://i.pinimg.com/736x/61/9e/a5/619ea589f2ac6a7940a8abc83ad2d0d0.jpg",
               },
               {
                 title: "Interactive Couple Games",
                 icon: <Sparkles className="w-6 h-6" />,
-                img: "/reconnection_cruise.png",
+                img: "https://i.pinimg.com/736x/c5/72/91/c57291e615dfa7915f6be716c307283c.jpg",
               },
               {
                 title: "Poolside Relaxation",
                 icon: <Coffee className="w-6 h-6" />,
-                img: "/phuket_beach_luxury.png",
+                img: "https://i.pinimg.com/736x/dc/1e/cf/dc1ecf2bc6949394db2939b1221fb735.jpg",
               },
               {
                 title: "All White Beach Party",
                 icon: <Users className="w-6 h-6" />,
-                img: "/phuket_beach_luxury.png",
+                img: "https://i.pinimg.com/1200x/90/2f/7d/902f7d26aa6fef3c44039f78c1483c05.jpg",
               },
               {
                 title: "African Gala Night",
                 icon: <Users className="w-6 h-6" />,
-                img: "/phuket_beach_luxury.png",
+                img: "https://i.pinimg.com/736x/98/e9/2d/98e92d83dc304f35b5cc51a29ffaac37.jpg",
               },
               {
                 title: "Marriage Deep-Dive",
                 icon: <Heart className="w-6 h-6" />,
-                img: "/phuket_beach_luxury.png",
+                img: "https://i.pinimg.com/736x/c5/72/91/c57291e615dfa7915f6be716c307283c.jpg",
               },
             ].map((item, i) => (
               <motion.div
