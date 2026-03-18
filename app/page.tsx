@@ -93,7 +93,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-surface-950 text-white font-sans selection:bg-brand-500/30 selection:text-white overflow-x-hidden">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-500">
+      <nav className="fixed top-0 w-full z-50 px-6 py-4 flex  items-center transition-all duration-500 justify-center md:justify-between">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -116,10 +116,11 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
+          className="hidden md:block"
         >
           <Link
             href="https://forms.gle/kk6wvn2nE6N19zRPA"
-            className="group relative px-6 py-2.5 bg-brand-600 rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-900/20"
+            className="group relative px-6 py-2.5 bg-brand-600 rounded-full font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-900/20 "
           >
             <span className="relative z-10">Secure Your Slot</span>
             <div className="absolute inset-0 bg-gradient-to-r from-brand-400 to-brand-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
