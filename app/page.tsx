@@ -13,6 +13,8 @@ import {
   Camera,
   Coffee,
   Sparkles,
+  Baby,
+  Utensils,
 } from "lucide-react";
 
 function Countdown() {
@@ -86,6 +88,52 @@ function Countdown() {
         </motion.div>
       ))}
     </div>
+  );
+}
+
+const TOTAL_SLOTS = 25;
+
+function SlotCounter() {
+  // This value can be updated manually or fetched from an API
+  const slotsRemaining = 25;
+  const slotsTaken = TOTAL_SLOTS - slotsRemaining;
+  const percentTaken = (slotsTaken / TOTAL_SLOTS) * 100;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mt-10 glass-dark border border-brand-500/20 rounded-3xl p-8 max-w-xl mx-auto"
+    >
+      <div className="flex items-center justify-center gap-3 mb-4">
+        <Users className="w-6 h-6 text-brand-400" />
+        <p className="text-accent-400 font-black text-lg uppercase tracking-widest">
+          Limited Availability
+        </p>
+      </div>
+      <div className="text-center mb-6">
+        <span className="text-5xl md:text-7xl font-black text-white">
+          {slotsRemaining}
+        </span>
+        <span className="text-xl md:text-2xl text-zinc-400 font-bold ml-2">
+          / {TOTAL_SLOTS} slots remaining
+        </span>
+      </div>
+      {/* Progress bar */}
+      <div className="w-full h-3 bg-surface-800 rounded-full overflow-hidden mb-3">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${percentTaken}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="h-full bg-linear-to-r from-brand-600 to-brand-400 rounded-full"
+        />
+      </div>
+      <p className="text-zinc-500 text-sm font-bold uppercase tracking-wider text-center">
+        {slotsTaken} of {TOTAL_SLOTS} slots taken — Secure yours now!
+      </p>
+    </motion.div>
   );
 }
 
@@ -184,14 +232,16 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto glass-dark border border-accent-500/30 text-accent-100 px-12 py-5 rounded-full text-xl font-black uppercase tracking-widest hover:bg-accent-500/10 transition-all shadow-2xl relative group overflow-hidden"
-              >
-                <Sparkles className="absolute -left-4 -top-4 w-12 h-12 text-accent-500/20 group-hover:rotate-12 transition-transform" />
-                Registration Now
-              </motion.button>
+              <Link href="https://forms.gle/kk6wvn2nE6N19zRPA" target="_blank">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto glass-dark border border-accent-500/30 text-accent-100 px-12 py-5 rounded-full text-xl font-black uppercase tracking-widest hover:bg-accent-500/10 transition-all shadow-2xl relative group overflow-hidden cursor-pointer text-center"
+                >
+                  <Sparkles className="absolute -left-4 -top-4 w-12 h-12 text-accent-500/20 group-hover:rotate-12 transition-transform" />
+                  Register Here
+                </motion.div>
+              </Link>
 
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -209,6 +259,7 @@ export default function Home() {
           </motion.div>
 
           <Countdown />
+          <SlotCounter />
         </div>
 
         <motion.div
@@ -293,13 +344,23 @@ export default function Home() {
             <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter uppercase">
               The <span className="text-brand-500">Package</span>
             </h2>
-            <div className="inline-block glass-dark border border-brand-500/20 px-8 py-4 rounded-2xl mb-8">
+            <div className="inline-block glass-dark border border-brand-500/20 px-8 py-6 rounded-2xl mb-8">
               <p className="text-brand-400 font-black text-3xl md:text-5xl tracking-tighter">
                 INVESTMENT: ₦600,000
               </p>
               <p className="text-zinc-500 text-sm mt-2 uppercase tracking-widest font-bold">
                 * Payments can be made in two installments
               </p>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <div className="flex items-center justify-center gap-2 text-zinc-300">
+                  <Baby className="w-5 h-5 text-accent-400" />
+                  <p className="text-sm md:text-base font-bold">
+                    Coming with children? Additional childcare fee:{" "}
+                    <span className="text-accent-400 font-black">₦100,000</span>{" "}
+                    <span className="text-zinc-500">(Total: ₦700,000)</span>
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto mt-12 bg-surface-950/50 p-6 rounded-[32px] border border-white/5 font-bold">
@@ -309,8 +370,8 @@ export default function Home() {
                   label: "3 Nights Stay",
                 },
                 {
-                  icon: <Coffee className="w-5 h-5 text-brand-400" />,
-                  label: "Full-course Meals",
+                  icon: <Utensils className="w-5 h-5 text-brand-400" />,
+                  label: "Breakfast, Lunch & Dinner",
                 },
                 {
                   icon: <Sparkles className="w-5 h-5 text-brand-400" />,
@@ -370,7 +431,8 @@ export default function Home() {
               {
                 title: "All White Beach Party",
                 icon: <Users className="w-6 h-6" />,
-                img: "https://i.pinimg.com/1200x/90/2f/7d/902f7d26aa6fef3c44039f78c1483c05.jpg",
+                // TODO: Replace with actual image from Mr Sam when available
+                img: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=800",
               },
               {
                 title: "African Gala Night",
@@ -443,9 +505,14 @@ export default function Home() {
                 img: "/test1.jpeg",
               },
               {
-                name: "James Washington",
-                text: "The sessions with Dr. Wisdom were life-changing. We left feeling refreshed and equipped with new tools for our marriage journey.",
-                img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400",
+                name: "Mr&Mrs Samuel",
+                text: "Love reboot is an unforgettable experience. We look forward to it yearly. There’s just so much to learn and experience. From the game sessions, teachings, prayer, and oh! The emphasis on the importance of intimacy and communication in a marriage. The honest conversation session between couples stands out everywhere. Here each couple honestly review their marriage and we talk discuss solutions. It’s an impactful session. We have grown closer as a couple just by yearly attending Love reboot.I call it home away from home, an opportunity to reset and refill your love well.",
+                img: "/test2.png",
+              },
+              {
+                name: "Mr&Mrs Abali",
+                text: "Ever since we attended for the first time in 2021, the 'Love Reboot' couples getaway has been an event we eagerly anticipate every single year with a lot of excitement! Over the years LR has become a a very important piece in the fabric of our marriage. Previous editions have always been such an experience. Right from the sex and communication evaluation sessions, to the men/women breakout sessions, to the recreational activities, to the parties, to the frienships formed during the event. Everything seems to be intentionally curated to add just another layer of fondness, intimacy and romance to our marriage.For us as a couple LR has made both of us better lovers, finer communicators, fonder soulmates in this journey of marriage. If there was a LR event 12 times in a year, we would love to attend every single one of them!",
+                img: "/test3.JPG",
               },
             ].map((testimonial, i) => (
               <motion.div
@@ -453,7 +520,7 @@ export default function Home() {
                 initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="flex flex-col md:flex-row items-center gap-8 p-10 glass-dark border border-white/5 rounded-[40px] text-left group hover:border-brand-500/20 transition-all duration-500"
+                className="flex flex-col items-center gap-8 p-10 glass-dark border border-white/5 rounded-[40px] text-left group hover:border-brand-500/20 transition-all duration-500"
               >
                 <div className="relative w-40 h-40 shrink-0">
                   <div className="absolute inset-0 bg-brand-500 rounded-3xl rotate-6 group-hover:rotate-12 transition-transform" />
