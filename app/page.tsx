@@ -15,6 +15,7 @@ import {
   Sparkles,
   Baby,
   Utensils,
+  HelpCircle,
 } from "lucide-react";
 
 function Countdown() {
@@ -442,7 +443,12 @@ export default function Home() {
               {
                 title: "Marriage Deep-Dive",
                 icon: <Heart className="w-6 h-6" />,
-                img: "https://i.pinimg.com/736x/c5/72/91/c57291e615dfa7915f6be716c307283c.jpg",
+                img: "https://i.pinimg.com/736x/07/3a/ff/073affc062047978498e26924c55c596.jpg",
+              },
+              {
+                title: "Couple Prayer session",
+                icon: <HelpCircle className="w-6 h-6" />,
+                img: "https://i.pinimg.com/736x/f4/e4/e5/f4e4e55e4acd72cb7efc32d696432073.jpg",
               },
             ].map((item, i) => (
               <motion.div
@@ -497,7 +503,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {[
               {
                 name: "Mr&Mrs Uju",
@@ -513,6 +519,11 @@ export default function Home() {
                 name: "Mr&Mrs Abali",
                 text: "Ever since we attended for the first time in 2021, the 'Love Reboot' couples getaway has been an event we eagerly anticipate every single year with a lot of excitement! Over the years LR has become a a very important piece in the fabric of our marriage. Previous editions have always been such an experience. Right from the sex and communication evaluation sessions, to the men/women breakout sessions, to the recreational activities, to the parties, to the frienships formed during the event. Everything seems to be intentionally curated to add just another layer of fondness, intimacy and romance to our marriage.For us as a couple LR has made both of us better lovers, finer communicators, fonder soulmates in this journey of marriage. If there was a LR event 12 times in a year, we would love to attend every single one of them!",
                 img: "/test3.JPG",
+              },
+              {
+                name: "Mr&Mrs Exodus",
+                text: "Love Reboot was not getaway… it was a divine reset. We came in expecting a refreshing break, but what we experienced went far beyond relaxation. It was a deeply intentional, spirit-filled encounter that helped us pause, reflect, and truly reconnect not just with each other, but with the very foundation of our marriage. Every session was thoughtfully designed, addressing real-life issues with wisdom & practical tools we can immediately apply. The atmosphere was warm, safe, and full of love, creating the perfect space for honest conversations and healing. One of the most beautiful parts for us was how we were reminded that marriage is not just about love, but about continuous growth, understanding, and intentionality. We laughed, we learned, we unlearned, and we grew stronger. The experience was enlightening -spiritually, emotionally, and relationally. We left not just reconnected, but realigned, with a renewed commitment to build a thriving, God-centered marriage.We highly recommend Love Reboot to every couple who desires more clarity, connection, and more purpose in their union.",
+                img: "/test4.jpeg",
               },
             ].map((testimonial, i) => (
               <motion.div
@@ -545,6 +556,70 @@ export default function Home() {
                     &ldquo;{testimonial.text}&rdquo;
                   </p>
                   <p className="text-accent-400 font-black tracking-tight uppercase text-lg">
+                    {testimonial.name}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {[
+              {
+                name: "Mr&Mrs Uju",
+                text: "Love reboot has been an amazing experience for us as we look forward to time away from the hustle and bustle !!! One of Our most enjoyed sessions was the honest survey/questionnaire on intimacy as a couple and truly that helped us understand how deliberate we need to be about our intimacy away from the busy-ness of life!!",
+                img: "/test1.jpeg",
+              },
+              {
+                name: "Mr&Mrs Samuel",
+                text: "Love reboot is an unforgettable experience. We look forward to it yearly. There’s just so much to learn and experience. From the game sessions, teachings, prayer, and oh! The emphasis on the importance of intimacy and communication in a marriage. The honest conversation session between couples stands out everywhere. Here each couple honestly review their marriage and we talk discuss solutions. It’s an impactful session. We have grown closer as a couple just by yearly attending Love reboot.I call it home away from home, an opportunity to reset and refill your love well.",
+                img: "/test2.png",
+              },
+              {
+                name: "Mr&Mrs Abali",
+                text: "Ever since we attended for the first time in 2021, the 'Love Reboot' couples getaway has been an event we eagerly anticipate every single year with a lot of excitement! Over the years LR has become a a very important piece in the fabric of our marriage. Previous editions have always been such an experience. Right from the sex and communication evaluation sessions, to the men/women breakout sessions, to the recreational activities, to the parties, to the frienships formed during the event. Everything seems to be intentionally curated to add just another layer of fondness, intimacy and romance to our marriage.For us as a couple LR has made both of us better lovers, finer communicators, fonder soulmates in this journey of marriage. If there was a LR event 12 times in a year, we would love to attend every single one of them!",
+                img: "/test3.JPG",
+              },
+              {
+                name: "Mr&Mrs Exodus",
+                text: "Love Reboot was not getaway… it was a divine reset. We came in expecting a refreshing break, but what we experienced went far beyond relaxation. It was a deeply intentional, spirit-filled encounter that helped us pause, reflect, and truly reconnect not just with each other, but with the very foundation of our marriage. Every session was thoughtfully designed, addressing real-life issues with wisdom & practical tools we can immediately apply. The atmosphere was warm, safe, and full of love, creating the perfect space for honest conversations and healing. One of the most beautiful parts for us was how we were reminded that marriage is not just about love, but about continuous growth, understanding, and intentionality. We laughed, we learned, we unlearned, and we grew stronger. The experience was enlightening -spiritually, emotionally, and relationally. We left not just reconnected, but realigned, with a renewed commitment to build a thriving, God-centered marriage.We highly recommend Love Reboot to every couple who desires more clarity, connection, and more purpose in their union.",
+                img: "/test4.jpeg",
+              },
+            ].map((testimonial, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative h-[500px] rounded-[32px] overflow-hidden group"
+              >
+                {/* FULL IMAGE */}
+                <Image
+                  src={testimonial.img}
+                  alt={testimonial.name}
+                  fill
+                  className="object-contain group-hover:scale-105 transition duration-700"
+                />
+
+                {/* DARK GRADIENT OVERLAY */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+                {/* CONTENT */}
+                <div className="absolute bottom-0 p-6 md:p-8">
+                  {/* <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Sparkles
+                        key={i}
+                        className="w-5 h-5 text-accent-500 fill-accent-500"
+                      />
+                    ))}
+                  </div> */}
+
+                  <p className="text-white text-base md:text-lg leading-relaxed mb-4 italic line-clamp-6">
+                    &ldquo;{testimonial.text}&rdquo;
+                  </p>
+
+                  <p className="text-accent-400 font-bold uppercase tracking-wide">
                     {testimonial.name}
                   </p>
                 </div>
