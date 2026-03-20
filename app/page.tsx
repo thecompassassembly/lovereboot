@@ -362,6 +362,21 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+
+              <div className="mt-10">
+                <p className="text-accent-400 font-black text-xl mb-4 uppercase tracking-[0.3em]">
+                  Values you will get
+                </p>
+                <p className="text-zinc-500 text-sm mt-2 uppercase tracking-widest font-bold">
+                  Just us session( A husband and Wife Exclusive)
+                </p>
+                <p className="text-zinc-500 text-sm mt-2 uppercase tracking-widest font-bold">
+                  Intimacy Evaluation test
+                </p>
+                <p className="text-zinc-500 text-sm mt-2 uppercase tracking-widest font-bold">
+                  Dj party experience and more...
+                </p>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto mt-12 bg-surface-950/50 p-6 rounded-[32px] border border-white/5 font-bold">
@@ -372,7 +387,7 @@ export default function Home() {
                 },
                 {
                   icon: <Utensils className="w-5 h-5 text-brand-400" />,
-                  label: "Breakfast, Lunch & Dinner",
+                  label: "Full-Course meals",
                 },
                 {
                   icon: <Sparkles className="w-5 h-5 text-brand-400" />,
@@ -591,35 +606,26 @@ export default function Home() {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative h-[500px] rounded-[32px] overflow-hidden group"
+                className="break-inside-avoid bg-neutral-900 rounded-[28px] overflow-hidden shadow-xl hover:shadow-2xl transition duration-500"
               >
-                {/* FULL IMAGE */}
-                <Image
-                  src={testimonial.img}
-                  alt={testimonial.name}
-                  fill
-                  className="object-contain group-hover:scale-105 transition duration-700"
-                />
-
-                {/* DARK GRADIENT OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                {/* IMAGE (FULLY VISIBLE) */}
+                <div className="w-full bg-black/20 p-4 flex items-center justify-center">
+                  <Image
+                    src={testimonial.img}
+                    alt={testimonial.name}
+                    width={600}
+                    height={600}
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
 
                 {/* CONTENT */}
-                <div className="absolute bottom-0 p-6 md:p-8">
-                  {/* <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Sparkles
-                        key={i}
-                        className="w-5 h-5 text-accent-500 fill-accent-500"
-                      />
-                    ))}
-                  </div> */}
-
-                  <p className="text-white text-base md:text-lg leading-relaxed mb-4 italic line-clamp-6">
-                    &ldquo;{testimonial.text}&rdquo;
+                <div className="p-6 md:p-8">
+                  <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6 italic">
+                    “{testimonial.text}”
                   </p>
 
-                  <p className="text-accent-400 font-bold uppercase tracking-wide">
+                  <p className="text-accent-400 font-semibold uppercase tracking-wide text-sm">
                     {testimonial.name}
                   </p>
                 </div>
