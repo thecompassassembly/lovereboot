@@ -364,56 +364,33 @@ export default function Home() {
               </div>
 
               <div className="mt-10">
-                <p className="text-accent-400 font-black text-xl mb-4 uppercase tracking-[0.3em]">
-                  Values you will get
+                <p className="text-accent-400 font-black text-2xl mb-6 uppercase tracking-[0.3em]">
+                  Values You Will Get
                 </p>
-                <p className="text-zinc-500 text-sm mt-2 uppercase tracking-widest font-bold">
-                  Just us session( A husband and Wife Exclusive)
-                </p>
-                <p className="text-zinc-500 text-sm mt-2 uppercase tracking-widest font-bold">
-                  Intimacy Evaluation test
-                </p>
-                <p className="text-zinc-500 text-sm mt-2 uppercase tracking-widest font-bold">
-                  Dj party experience and more...
-                </p>
-              </div>
-            </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto bg-surface-950/50 p-6 rounded-[32px] border border-white/5 font-bold">
-              {[
-                {
-                  icon: <Users className="w-5 h-5 text-brand-400" />,
-                  label: "3 Nights Stay",
-                },
-                {
-                  icon: <Utensils className="w-5 h-5 text-brand-400" />,
-                  label: "Full-Course meals",
-                },
-                {
-                  icon: <Sparkles className="w-5 h-5 text-brand-400" />,
-                  label: "Coaching",
-                },
-                {
-                  icon: <MapPin className="w-5 h-5 text-brand-400" />,
-                  label: "Excursions",
-                },
-                {
-                  icon: <Heart className="w-5 h-5 text-brand-400" />,
-                  label: "T-Shirts",
-                },
-                {
-                  icon: <Sparkles className="w-5 h-5 text-brand-400" />,
-                  label: "Gift Packs",
-                },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-center gap-2 text-xs md:text-sm text-zinc-400"
-                >
-                  {item.icon}
-                  <span>{item.label}</span>
+                <div className="grid grid-cols-1 gap-4">
+                  {[
+                    "Just us session (A husband and Wife Exclusive)",
+                    "Intimacy Evaluation Test",
+                    "DJ Party Experience and more...",
+                    "3 Nights Stay",
+                    "Full-Course Meals",
+                    "Coaching",
+                    "Excursions",
+                    "T-Shirts",
+                    "Gift Packs",
+                  ].map((item, i) => (
+                    <div
+                      key={i}
+                      className="bg-zinc-900/50 backdrop-blur-md p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                    >
+                      <span className="text-zinc-200 text-sm font-semibold uppercase tracking-widest">
+                        {i + 1}. {item}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
 
