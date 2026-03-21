@@ -374,7 +374,7 @@ export default function Home() {
                     "Intimacy Evaluation Test",
                     "DJ Party Experience and more...",
                     "3 Nights Stay",
-                    "Full-Course Meals",
+                    "Breakfast, Lunch and Dinner",
                     "Coaching",
                     "Excursions",
                     "T-Shirts",
