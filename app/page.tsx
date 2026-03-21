@@ -345,7 +345,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter uppercase">
               The <span className="text-brand-500">Package</span>
             </h2>
-            <div className="inline-block glass-dark border border-brand-500/20 px-8 py-6 rounded-2xl mb-8">
+            <div className="inline-block glass-dark border border-brand-500/20 px-8 py-6 rounded-2xl">
               <p className="text-brand-400 font-black text-3xl md:text-5xl tracking-tighter">
                 INVESTMENT: ₦600,000
               </p>
@@ -379,7 +379,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto mt-12 bg-surface-950/50 p-6 rounded-[32px] border border-white/5 font-bold">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto bg-surface-950/50 p-6 rounded-[32px] border border-white/5 font-bold">
               {[
                 {
                   icon: <Users className="w-5 h-5 text-brand-400" />,
@@ -448,7 +448,7 @@ export default function Home() {
                 title: "All White Beach Party",
                 icon: <Users className="w-6 h-6" />,
                 // TODO: Replace with actual image from Mr Sam when available
-                img: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=800",
+                img: "/pool-pty.jpeg",
               },
               {
                 title: "African Gala Night",
@@ -517,66 +517,6 @@ export default function Home() {
               Testimonies from previous Love Reboot sessions
             </p>
           </motion.div>
-
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {[
-              {
-                name: "Mr&Mrs Uju",
-                text: "Love reboot has been an amazing experience for us as we look forward to time away from the hustle and bustle !!! One of Our most enjoyed sessions was the honest survey/questionnaire on intimacy as a couple and truly that helped us understand how deliberate we need to be about our intimacy away from the busy-ness of life!!",
-                img: "/test1.jpeg",
-              },
-              {
-                name: "Mr&Mrs Samuel",
-                text: "Love reboot is an unforgettable experience. We look forward to it yearly. There’s just so much to learn and experience. From the game sessions, teachings, prayer, and oh! The emphasis on the importance of intimacy and communication in a marriage. The honest conversation session between couples stands out everywhere. Here each couple honestly review their marriage and we talk discuss solutions. It’s an impactful session. We have grown closer as a couple just by yearly attending Love reboot.I call it home away from home, an opportunity to reset and refill your love well.",
-                img: "/test2.png",
-              },
-              {
-                name: "Mr&Mrs Abali",
-                text: "Ever since we attended for the first time in 2021, the 'Love Reboot' couples getaway has been an event we eagerly anticipate every single year with a lot of excitement! Over the years LR has become a a very important piece in the fabric of our marriage. Previous editions have always been such an experience. Right from the sex and communication evaluation sessions, to the men/women breakout sessions, to the recreational activities, to the parties, to the frienships formed during the event. Everything seems to be intentionally curated to add just another layer of fondness, intimacy and romance to our marriage.For us as a couple LR has made both of us better lovers, finer communicators, fonder soulmates in this journey of marriage. If there was a LR event 12 times in a year, we would love to attend every single one of them!",
-                img: "/test3.JPG",
-              },
-              {
-                name: "Mr&Mrs Exodus",
-                text: "Love Reboot was not getaway… it was a divine reset. We came in expecting a refreshing break, but what we experienced went far beyond relaxation. It was a deeply intentional, spirit-filled encounter that helped us pause, reflect, and truly reconnect not just with each other, but with the very foundation of our marriage. Every session was thoughtfully designed, addressing real-life issues with wisdom & practical tools we can immediately apply. The atmosphere was warm, safe, and full of love, creating the perfect space for honest conversations and healing. One of the most beautiful parts for us was how we were reminded that marriage is not just about love, but about continuous growth, understanding, and intentionality. We laughed, we learned, we unlearned, and we grew stronger. The experience was enlightening -spiritually, emotionally, and relationally. We left not just reconnected, but realigned, with a renewed commitment to build a thriving, God-centered marriage.We highly recommend Love Reboot to every couple who desires more clarity, connection, and more purpose in their union.",
-                img: "/test4.jpeg",
-              },
-            ].map((testimonial, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="flex flex-col items-center gap-8 p-10 glass-dark border border-white/5 rounded-[40px] text-left group hover:border-brand-500/20 transition-all duration-500"
-              >
-                <div className="relative w-40 h-40 shrink-0">
-                  <div className="absolute inset-0 bg-brand-500 rounded-3xl rotate-6 group-hover:rotate-12 transition-transform" />
-                  <Image
-                    className="relative z-10 w-full h-full rounded-3xl object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                    src={testimonial.img}
-                    alt={testimonial.name}
-                    width={160}
-                    height={160}
-                  />
-                </div>
-                <div>
-                  <div className="flex gap-1 mb-6">
-                    {[...Array(5)].map((_, i) => (
-                      <Sparkles
-                        key={i}
-                        className="w-5 h-5 text-accent-500 fill-accent-500"
-                      />
-                    ))}
-                  </div>
-                  <p className="text-zinc-300 text-lg md:text-xl font-medium leading-relaxed mb-6 italic">
-                    &ldquo;{testimonial.text}&rdquo;
-                  </p>
-                  <p className="text-accent-400 font-black tracking-tight uppercase text-lg">
-                    {testimonial.name}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div> */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {[
@@ -706,7 +646,7 @@ export default function Home() {
               </p>
               <p className="text-sm opacity-60 uppercase tracking-widest leading-loose">
                 WhatsApp: 07033196465 <br />
-                Email: thewisdomdrivenmarriageacademy@gmail.com
+                thewisdomdrivenmarriageacademy@gmail.com
               </p>
               <div className="mt-10 pt-10 border-t border-white/5">
                 <p className="opacity-40 text-xs font-bold uppercase tracking-[0.5em]">
