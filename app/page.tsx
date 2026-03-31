@@ -353,7 +353,7 @@ export default function Home() {
                   subtitle:
                     "Experience luxury in our premium chalet with all the bells and whistles.",
                   features: [
-                    "3 nights stay in a serene environment (The Serenity Chalet #600)",
+                    "3 nights stay in a serene environment (The Serenity Chalet)",
                     "Feeding- Breakfast, Lunch & Dinner",
                     "Coaching",
                     "All excursions and activities",
@@ -371,7 +371,7 @@ export default function Home() {
                   subtitle:
                     "Comfortable and serene stay in our smart rooms, perfect for bonding.",
                   features: [
-                    "3 nights stay in a serene environment (The Smart Stay Room Chalet #550)",
+                    "3 nights stay in a serene environment (The Smart Stay Room Chalet)",
                     "Feeding- Breakfast, Lunch & Dinner",
                     "Coaching",
                     "All excursions and activities",
