@@ -597,7 +597,7 @@ export default function Home() {
                 img: "/test3.JPG",
               },
               {
-                name: "Mr&Mrs Exodus",
+                name: "Mr & Mrs Kingsley Exodus",
                 text: "Love Reboot was not getaway… it was a divine reset. We came in expecting a refreshing break, but what we experienced went far beyond relaxation. It was a deeply intentional, spirit-filled encounter that helped us pause, reflect, and truly reconnect not just with each other, but with the very foundation of our marriage. Every session was thoughtfully designed, addressing real-life issues with wisdom & practical tools we can immediately apply. The atmosphere was warm, safe, and full of love, creating the perfect space for honest conversations and healing. One of the most beautiful parts for us was how we were reminded that marriage is not just about love, but about continuous growth, understanding, and intentionality. We laughed, we learned, we unlearned, and we grew stronger. The experience was enlightening -spiritually, emotionally, and relationally. We left not just reconnected, but realigned, with a renewed commitment to build a thriving, God-centered marriage.We highly recommend Love Reboot to every couple who desires more clarity, connection, and more purpose in their union.",
                 img: "/test4.jpeg",
               },
