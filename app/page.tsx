@@ -14,7 +14,6 @@ import {
   Coffee,
   Sparkles,
   Baby,
-  Utensils,
   HelpCircle,
 } from "lucide-react";
 
@@ -345,11 +344,123 @@ export default function Home() {
             <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter uppercase">
               The <span className="text-brand-500">Package</span>
             </h2>
-            <div className="inline-block glass-dark border border-brand-500/20 px-8 py-6 rounded-2xl">
-              <p className="text-brand-400 font-black text-3xl md:text-5xl tracking-tighter">
-                INVESTMENT: ₦600,000
-              </p>
-              <p className="text-zinc-500 text-sm mt-2 uppercase tracking-widest font-bold">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto px-4">
+              {[
+                {
+                  name: "Serenity Chalet",
+                  oldPrice: "₦750,000",
+                  price: "₦600,000",
+                  subtitle:
+                    "Experience luxury in our premium chalet with all the bells and whistles.",
+                  features: [
+                    "3 nights stay in a serene environment (The Serenity Chalet #600)",
+                    "Feeding- Breakfast, Lunch & Dinner",
+                    "Coaching",
+                    "All excursions and activities",
+                    "T-shirts",
+                    "Memorable Gifts Packs",
+                    "Just us session (A husband and Wife Exclusive)",
+                    "Intimacy Evaluation test",
+                    "Dj party experience and more",
+                  ],
+                },
+                {
+                  name: "Smart Stay Room",
+                  oldPrice: "₦700,000",
+                  price: "₦550,000",
+                  subtitle:
+                    "Comfortable and serene stay in our smart rooms, perfect for bonding.",
+                  features: [
+                    "3 nights stay in a serene environment (The Smart Stay Room Chalet #550)",
+                    "Feeding- Breakfast, Lunch & Dinner",
+                    "Coaching",
+                    "All excursions and activities",
+                    "T-shirts",
+                    "Memorable Gifts Packs",
+                    "Just us session (A husband and Wife Exclusive)",
+                    "Intimacy Evaluation test",
+                    "Dj party experience and more",
+                  ],
+                },
+              ].map((plan, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="relative group h-full"
+                >
+                  <div className="relative h-full bg-white p-8 md:p-12 rounded-[50px] flex flex-col items-center overflow-hidden shadow-2xl">
+                    {/* Discount Ribbon */}
+                    <div className="absolute top-0 right-0 w-32 h-32 overflow-hidden pointer-events-none">
+                      <div className="absolute top-8 -right-8 w-40 h-8 bg-red-600 text-white text-[10px] font-black flex items-center justify-center uppercase tracking-widest rotate-45 shadow-md">
+                        Discount
+                      </div>
+                    </div>
+
+                    <h3 className="text-3xl md:text-5xl font-black mb-4 text-[#001D4A] tracking-tight text-center">
+                      {plan.name}
+                    </h3>
+
+                    <p className="text-sm md:text-base text-zinc-500 mb-8 text-center max-w-xs font-medium leading-relaxed">
+                      {plan.subtitle}
+                    </p>
+
+                    <div className="flex flex-col items-center mb-10">
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl md:text-3xl font-black text-zinc-400 line-through decoration-[3px] decoration-zinc-500/50">
+                          {plan.oldPrice}
+                        </span>
+                        <span className="text-5xl md:text-7xl font-black text-red-600 tracking-tighter">
+                          {plan.price}
+                        </span>
+                      </div>
+                      <span className="text-zinc-500 text-sm md:text-base font-bold uppercase tracking-widest mt-2">
+                        per couple
+                      </span>
+                    </div>
+
+                    <div className="w-full space-y-6 mb-12 text-left px-4">
+                      {plan.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-4">
+                          <div className="mt-1 shrink-0 w-6 h-6 flex items-center justify-center">
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              className="w-5 h-5 text-red-600 stroke-[4px]"
+                              stroke="currentColor"
+                            >
+                              <path
+                                d="M5 13l4 4L19 7"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                          <span className="text-zinc-800 text-base md:text-lg font-bold leading-tight">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto w-full">
+                      <Link
+                        href="https://forms.gle/kk6wvn2nE6N19zRPA"
+                        target="_blank"
+                        className="block w-full text-center px-8 py-5 bg-red-600 text-white hover:bg-red-700 rounded-2xl font-black text-xl uppercase tracking-widest transition-all duration-300 shadow-xl hover:shadow-red-900/20 active:scale-95"
+                      >
+                        Book Now
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-20 inline-block glass-dark border border-brand-500/20 px-8 py-6 rounded-2xl">
+              <p className="text-zinc-400 text-sm uppercase tracking-widest font-bold">
                 * Payments can be made in two installments
               </p>
               <div className="mt-4 pt-4 border-t border-white/10">
@@ -358,37 +469,10 @@ export default function Home() {
                   <p className="text-sm md:text-base font-bold">
                     Coming with children? Additional childcare fee:{" "}
                     <span className="text-accent-400 font-black">₦100,000</span>{" "}
-                    <span className="text-zinc-500">(Total: ₦700,000)</span>
+                    <span className="text-zinc-500">
+                      (Total: ₦700,000 or ₦650,000)
+                    </span>
                   </p>
-                </div>
-              </div>
-
-              <div className="mt-10">
-                <p className="text-accent-400 font-black text-2xl mb-6 uppercase tracking-[0.3em]">
-                  Values You Will Get
-                </p>
-
-                <div className="grid grid-cols-1 gap-4">
-                  {[
-                    "Just us session (A husband and Wife Exclusive)",
-                    "Intimacy Evaluation Test",
-                    "DJ Party Experience and more...",
-                    "3 Nights Stay",
-                    "Breakfast, Lunch and Dinner",
-                    "Coaching",
-                    "Excursions",
-                    "T-Shirts",
-                    "Gift Packs",
-                  ].map((item, i) => (
-                    <div
-                      key={i}
-                      className="bg-zinc-900/50 backdrop-blur-md p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-                    >
-                      <span className="text-zinc-200 text-sm font-semibold uppercase tracking-widest">
-                        {i + 1}. {item}
-                      </span>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
