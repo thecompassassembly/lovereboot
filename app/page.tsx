@@ -95,7 +95,7 @@ const TOTAL_SLOTS = 25;
 
 function SlotCounter() {
   // This value can be updated manually or fetched from an API
-  const slotsRemaining = 25;
+  const slotsRemaining = 23;
   const slotsTaken = TOTAL_SLOTS - slotsRemaining;
   const percentTaken = (slotsTaken / TOTAL_SLOTS) * 100;
 
