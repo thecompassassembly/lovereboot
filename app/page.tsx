@@ -410,7 +410,7 @@ export default function Home() {
                     </p>
 
                     <div className="flex flex-col items-center mb-10">
-                      <div className="flex flex-col lg:flex-row items-center gap-3">
+                      <div className="flex flex-col items-center gap-3">
                         <span className="text-2xl md:text-3xl font-black text-zinc-400 line-through decoration-[3px] decoration-zinc-500/50">
                           {plan.oldPrice}
                         </span>
