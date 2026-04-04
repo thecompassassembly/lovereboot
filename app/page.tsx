@@ -99,6 +99,7 @@ function SlotCounter() {
   const slotsTaken = TOTAL_SLOTS - slotsRemaining;
   const percentTaken = (slotsTaken / TOTAL_SLOTS) * 100;
 
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
