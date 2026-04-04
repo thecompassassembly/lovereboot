@@ -362,7 +362,7 @@ export default function Home() {
                     "Just us session (A husband and Wife Exclusive)",
                     "Intimacy Evaluation test",
                     "Dj party experience and more",
-                    "Include (Logistics to & from Port-Harcourt)",
+                    "Logistics to & from Port-Harcourt",
                   ],
                 },
                 {
@@ -381,7 +381,7 @@ export default function Home() {
                     "Just us session (A husband and Wife Exclusive)",
                     "Intimacy Evaluation test",
                     "Dj party experience and more",
-                    "Include ( Logistics to & from Port-Harcourt)",
+                    "Logistics to & from Port-Harcourt",
                   ],
                 },
               ].map((plan, i) => (
@@ -410,7 +410,7 @@ export default function Home() {
                     </p>
 
                     <div className="flex flex-col items-center mb-10">
-                      <div className="flex items-center gap-3">
+                      <div className="flex flex-col lg:flex-row items-center gap-3">
                         <span className="text-2xl md:text-3xl font-black text-zinc-400 line-through decoration-[3px] decoration-zinc-500/50">
                           {plan.oldPrice}
                         </span>
