@@ -709,7 +709,9 @@ export default function Home() {
                 UBA • 1023892797
               </p>
               <p className="text-sm opacity-60 uppercase tracking-widest leading-loose">
-                WhatsApp: 07033196465 <br />
+                WhatsApp: 07033196465
+              </p>
+              <p className="text-sm opacity-60">
                 thewisdomdrivenmarriageacademy@gmail.com
               </p>
               <div className="mt-10 pt-10 border-t border-white/5">
