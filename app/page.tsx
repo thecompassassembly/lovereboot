@@ -711,8 +711,11 @@ export default function Home() {
               <p className="text-sm opacity-60 uppercase tracking-widest leading-loose">
                 WhatsApp: 07033196465
               </p>
-              <p className="text-sm opacity-60">
+              <p className="text-sm opacity-60 hidden md:block">
                 thewisdomdrivenmarriageacademy@gmail.com
+              </p>
+              <p className="text-sm opacity-60 block md:hidden">
+                thewisdomdrivenmarriageacademy <br /> @gmail.com
               </p>
               <div className="mt-10 pt-10 border-t border-white/5">
                 <p className="opacity-40 text-xs font-bold uppercase tracking-[0.5em]">
