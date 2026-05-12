@@ -26,7 +26,7 @@ function Countdown() {
   });
 
   useEffect(() => {
-    const targetDate = new Date("2026-05-27T00:00:00").getTime();
+    const targetDate = new Date("2026-06-11T00:00:00").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -91,11 +91,11 @@ function Countdown() {
   );
 }
 
-const TOTAL_SLOTS = 25;
+const TOTAL_SLOTS = 22;
 
 function SlotCounter() {
   // This value can be updated manually or fetched from an API
-  const slotsRemaining = 23;
+  const slotsRemaining = 18;
   const slotsTaken = TOTAL_SLOTS - slotsRemaining;
   const percentTaken = (slotsTaken / TOTAL_SLOTS) * 100;
 
@@ -307,7 +307,7 @@ export default function Home() {
                 icon: <MapPin className="w-8 h-8 text-white" />,
               },
               {
-                label: "27th - 30th May 2026",
+                label: "11th - 14th June 2026",
                 sub: "Save the date for this life-changing encounter",
                 icon: <Calendar className="w-8 h-8 text-white" />,
               },
